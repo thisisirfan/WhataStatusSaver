@@ -1,0 +1,2 @@
+alias: whatastatus
+pass: centangle

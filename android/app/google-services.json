@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "499868341565",
+    "firebase_url": "https://whatastatussaver.firebaseio.com",
+    "project_id": "whatastatussaver",
+    "storage_bucket": "whatastatussaver.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:499868341565:android:7557567bf009aa3cbce154",
+        "android_client_info": {
+          "package_name": "com.whatastatussaver"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "499868341565-0ndste0s7q5k2s922ishu5l4g8e8o936.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDsFnhprUdk2kgRk7xG9MJGoPhR_Bq2Ups"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "499868341565-0ndste0s7q5k2s922ishu5l4g8e8o936.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

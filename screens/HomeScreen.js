@@ -34,6 +34,7 @@ export class HomeScreen extends React.Component {
       InterAdvert.show();
     });
   }
+
   screenBg() {
     return (
       <Image

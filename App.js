@@ -10,23 +10,23 @@ export default class App extends Component {
     super();
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     this.checkFcmPermission();
     this.createNotificationListeners();
-    this.messageListener = firebase.messaging().onMessage(message => {
+    /* this.messageListener = firebase.messaging().onMessage(message => {
       console.log('push notification arrived', message);
-    });
+    }); */
 
-    this.onTokenRefreshListener = firebase
+    /* this.onTokenRefreshListener = firebase
       .messaging()
       .onTokenRefresh(fcmToken => {
         console.log('on token refresh', fcmToken);
-      });
+      }); */
   }
 
   componentWillUnmount() {
     this.messageListener();
-    this.onTokenRefreshListener();
+    /* this.onTokenRefreshListener(); */
   }
 
   async getToken() {
@@ -63,8 +63,7 @@ export default class App extends Component {
       .notifications()
       .onNotification(notification => {
         const {title, body} = notification;
-        console.log('onNotification:');
-
+        console.log('onNotification:', notification);
         const localNotification = new firebase.notifications.Notification({
           sound: 'sampleaudio',
           show_in_foreground: true,
@@ -74,8 +73,6 @@ export default class App extends Component {
           .setTitle(notification.title)
           .setBody(notification.body)
           .android.setChannelId('fcm_FirebaseNotifiction_default_channel') // e.g. the id you chose above
-          .android.setSmallIcon('@drawable/ic_launcher') // create this icon in Android Studio
-          .android.setColor('#000000') // you can set a color here
           .android.setPriority(firebase.notifications.Android.Priority.High);
 
         firebase
@@ -112,8 +109,8 @@ export default class App extends Component {
       .getInitialNotification();
     if (notificationOpen) {
       const {title, body} = notificationOpen.notification;
-      console.log('getInitialNotification:', notificationOpen);
-      Alert.alert(title, body);
+      console.log('getInitialNotification:::', notificationOpen);
+      //Alert.alert(title, body);
     }
     /*
      * Triggered for data only payload in foreground

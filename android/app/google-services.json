@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "499868341565",
-    "firebase_url": "https://whatastatussaver.firebaseio.com",
-    "project_id": "whatastatussaver",
-    "storage_bucket": "whatastatussaver.appspot.com"
+    "project_number": "272290815728",
+    "firebase_url": "https://ultimate-status-saver-rn.firebaseio.com",
+    "project_id": "ultimate-status-saver-rn",
+    "storage_bucket": "ultimate-status-saver-rn.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:499868341565:android:7557567bf009aa3cbce154",
+        "mobilesdk_app_id": "1:272290815728:android:6bb9a10acca92b05192c35",
         "android_client_info": {
-          "package_name": "com.whatastatussaver"
+          "package_name": "com.centcom.ultimateStatusSaver"
         }
       },
       "oauth_client": [
         {
-          "client_id": "499868341565-0ndste0s7q5k2s922ishu5l4g8e8o936.apps.googleusercontent.com",
+          "client_id": "272290815728-dsnoh58i2u2btsei06ejaces24le9ain.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDsFnhprUdk2kgRk7xG9MJGoPhR_Bq2Ups"
+          "current_key": "AIzaSyAO-gmv6HLqDOCjDwy2RBwfWnOlHdyVWis"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "499868341565-0ndste0s7q5k2s922ishu5l4g8e8o936.apps.googleusercontent.com",
+              "client_id": "272290815728-dsnoh58i2u2btsei06ejaces24le9ain.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

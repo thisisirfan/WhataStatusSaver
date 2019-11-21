@@ -1,4 +1,4 @@
-package com.whatastatussaver;
+package com.centcom.ultimateStatusSaver;
 
 import android.app.Application;
 import android.content.Context;

@@ -31,6 +31,7 @@ export class HomeScreen extends React.Component {
   loadInterstatialAd() {
     InterAdvert.loadAd(InterRequest.build());
     InterAdvert.on('onAdLoaded', () => {
+      console.log('home screen, show interstatioal ad');
       InterAdvert.show();
     });
   }

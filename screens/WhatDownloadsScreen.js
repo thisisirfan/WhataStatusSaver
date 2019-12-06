@@ -25,6 +25,11 @@ const AdRequest = firebase.admob.AdRequest;
 const InterAdvert = firebase.admob().interstitial(interstitialUnitId);
 const InterRequest = new AdRequest();
 
+//load banner
+const bannerUnitId = GLOBAL.AD_IDS.BANNER_ID;
+const Banner = firebase.admob.Banner;
+const bannerRequest = new AdRequest();
+
 export class WhatDownloadsScreen extends React.Component {
   constructor(props) {
     super(props);
@@ -36,7 +41,7 @@ export class WhatDownloadsScreen extends React.Component {
 
   componentDidMount() {
     this.getStatuses();
-    this.loadInterstatialAd();
+    //this.loadInterstatialAd();
   }
 
   loadInterstatialAd() {
@@ -44,6 +49,20 @@ export class WhatDownloadsScreen extends React.Component {
     InterAdvert.on('onAdLoaded', () => {
       InterAdvert.show();
     });
+  }
+
+  showBannerAd() {
+    return (
+      <Banner
+        style={styles.bannerStyling}
+        unitId={bannerUnitId}
+        size={'SMART_BANNER'}
+        request={bannerRequest.build()}
+        onAdLoaded={() => {
+          //console.log('Advert banner loaded');
+        }}
+      />
+    );
   }
 
   getStatuses = async () => {
@@ -124,6 +143,7 @@ export class WhatDownloadsScreen extends React.Component {
   render() {
     return (
       <ScrollView style={styles.container}>
+        {this.showBannerAd()}
         {this.showStatuses()}
         {this.noStatusAvailable()}
       </ScrollView>

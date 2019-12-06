@@ -18,6 +18,15 @@ import Global from './../Global';
 const statusDirPath = Global.downloadFolderPath;
 var {width} = Dimensions.get('window');
 var {height} = Dimensions.get('window');
+import firebase from 'react-native-firebase';
+
+//ad config
+const interstitialUnitId = Global.AD_IDS.INTERSTITIAL_ID;
+const AdRequest = firebase.admob.AdRequest;
+
+//load interstatial ad
+const InterAdvert = firebase.admob().interstitial(interstitialUnitId);
+const InterRequest = new AdRequest();
 
 export class StatusMediaActions extends React.Component {
   constructor(props) {
@@ -67,6 +76,9 @@ export class StatusMediaActions extends React.Component {
             ToastAndroid.LONG,
           );
           console.log('file copied:', result);
+          setTimeout(() => {
+            this.loadInterstatialAd();
+          }, 2000);
         })
         .catch(err => {
           console.log('Error while copying:');
@@ -198,6 +210,13 @@ export class StatusMediaActions extends React.Component {
       }).catch(err => {
         console.log(err);
       });
+    });
+  }
+
+  loadInterstatialAd() {
+    InterAdvert.loadAd(InterRequest.build());
+    InterAdvert.on('onAdLoaded', () => {
+      InterAdvert.show();
     });
   }
 }

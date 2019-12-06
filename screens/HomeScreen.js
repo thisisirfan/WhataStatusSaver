@@ -1,9 +1,17 @@
 import React from 'react';
-import {StyleSheet, View, TouchableOpacity, Text, Image} from 'react-native';
+import {
+  AppState,
+  StyleSheet,
+  View,
+  TouchableOpacity,
+  Text,
+  Image,
+} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import firebase from 'react-native-firebase';
 import GLOBAL from './../Global';
 import RateApp from '../components/RateApp';
+
 //ad config
 const interstitialUnitId = GLOBAL.AD_IDS.INTERSTITIAL_ID;
 const AdRequest = firebase.admob.AdRequest;
@@ -18,6 +26,7 @@ const Banner = firebase.admob.Banner;
 const bannerRequest = new AdRequest();
 
 export class HomeScreen extends React.Component {
+  count = 0;
   constructor(props) {
     super(props);
     //load interstatial ad
@@ -25,6 +34,7 @@ export class HomeScreen extends React.Component {
   }
 
   goToScreen(screen) {
+    this.showRandomAds();
     this.props.navigation.push(screen);
   }
 
@@ -34,6 +44,17 @@ export class HomeScreen extends React.Component {
       console.log('home screen, show interstatioal ad');
       InterAdvert.show();
     });
+  }
+
+  showRandomAds() {
+    this.count++;
+    if (this.count % 4 === 0 || this.count % 9 === 0) {
+      console.log('count val: ', this.count);
+      this.loadInterstatialAd();
+      if (this.count === 9) {
+        this.count = 0;
+      }
+    }
   }
   screenBg() {
     return (

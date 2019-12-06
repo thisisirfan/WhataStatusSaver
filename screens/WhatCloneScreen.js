@@ -14,6 +14,11 @@ const AdRequest = firebase.admob.AdRequest;
 const InterAdvert = firebase.admob().interstitial(interstitialUnitId);
 const InterRequest = new AdRequest();
 
+//load banner
+const bannerUnitId = GLOBAL.AD_IDS.BANNER_ID;
+const Banner = firebase.admob.Banner;
+const bannerRequest = new AdRequest();
+
 export class WhatCloneScreen extends React.Component {
   constructor(props) {
     super(props);
@@ -23,7 +28,7 @@ export class WhatCloneScreen extends React.Component {
   }
 
   componentDidMount() {
-    this.loadInterstatialAd();
+    //this.loadInterstatialAd();
   }
 
   loadInterstatialAd() {
@@ -33,9 +38,24 @@ export class WhatCloneScreen extends React.Component {
     });
   }
 
+  showBannerAd() {
+    return (
+      <Banner
+        style={styles.bannerStyling}
+        unitId={bannerUnitId}
+        size={'SMART_BANNER'}
+        request={bannerRequest.build()}
+        onAdLoaded={() => {
+          //console.log('Advert banner loaded');
+        }}
+      />
+    );
+  }
+
   render() {
     return (
       <ScrollView style={styles.container}>
+        {this.showBannerAd()}
         <WebView
           userAgent={
             'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36'

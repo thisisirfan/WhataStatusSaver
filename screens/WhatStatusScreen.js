@@ -24,6 +24,11 @@ const AdRequest = firebase.admob.AdRequest;
 const InterAdvert = firebase.admob().interstitial(interstitialUnitId);
 const InterRequest = new AdRequest();
 
+//load banner
+const bannerUnitId = GLOBAL.AD_IDS.BANNER_ID;
+const Banner = firebase.admob.Banner;
+const bannerRequest = new AdRequest();
+
 export class WhatsappStatusScreen extends React.Component {
   constructor(props) {
     super(props);
@@ -35,7 +40,7 @@ export class WhatsappStatusScreen extends React.Component {
 
   componentDidMount() {
     this.getStatuses();
-    this.loadInterstatialAd();
+    //this.loadInterstatialAd();
   }
 
   loadInterstatialAd() {
@@ -43,6 +48,20 @@ export class WhatsappStatusScreen extends React.Component {
     InterAdvert.on('onAdLoaded', () => {
       InterAdvert.show();
     });
+  }
+
+  showBannerAd() {
+    return (
+      <Banner
+        style={styles.bannerStyling}
+        unitId={bannerUnitId}
+        size={'SMART_BANNER'}
+        request={bannerRequest.build()}
+        onAdLoaded={() => {
+          //console.log('Advert banner loaded');
+        }}
+      />
+    );
   }
 
   getStatuses = async () => {
@@ -112,22 +131,25 @@ export class WhatsappStatusScreen extends React.Component {
             if (item.name !== '.nomedia') {
               return (
                 <View style={styles.statusCol} key={index + 1}>
-                  <TouchableOpacity
-                    key={index}
-                    onPress={() => this._ViewStatus(item)}>
-                    <Image
-                      resizeMode="cover"
-                      source={{
-                        uri: 'file://' + item.path,
-                      }}
-                      style={styles.statusImage}
+                  <View>
+                    <TouchableOpacity
+                      key={index}
+                      onPress={() => this._ViewStatus(item)}>
+                      <Image
+                        resizeMode="cover"
+                        source={{
+                          uri: 'file://' + item.path,
+                        }}
+                        style={styles.statusImage}
+                      />
+                    </TouchableOpacity>
+                    <StatusMediaActions
+                      currentStatus={this.state.currentStatus}
+                      media={item}
+                      showDownload={true}
                     />
-                  </TouchableOpacity>
-                  <StatusMediaActions
-                    currentStatus={this.state.currentStatus}
-                    media={item}
-                    showDownload={true}
-                  />
+                  </View>
+                  {index % 2 === 0 ? this.showBannerAd() : null}
                 </View>
               );
             }

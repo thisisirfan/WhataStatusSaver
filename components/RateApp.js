@@ -18,7 +18,7 @@ export default class RateApp extends React.Component {
           style={{padding: 25}}
           onPress={() => {
             const options = {
-              GooglePackageName: 'com.centcom.ultimateStatusSaver',
+              GooglePackageName: 'com.centcom.qr.ultimateStatusSaver',
               preferredAndroidMarket: AndroidMarket.Google,
               preferInApp: false,
               openAppStoreIfInAppFails: true,

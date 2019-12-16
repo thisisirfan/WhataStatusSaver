@@ -1,4 +1,4 @@
-package com.centcom.ultimateStatusSaver;
+package com.centcom.qr.ultimateStatusSaver;
 
 import com.facebook.react.ReactActivity;
 

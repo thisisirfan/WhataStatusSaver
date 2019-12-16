@@ -1,4 +1,4 @@
-package com.centcom.ultimateStatusSaver;
+package com.centcom.qr.ultimateStatusSaver;
 
 import android.app.Application;
 import android.content.Context;
